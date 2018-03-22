@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Knowledge base</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="moviesImg">
+            <img th:src="@{/img/movie.png}"/>
+        </div>
+        <div class="jumbotron">
+            <h1 class="title">Find more information about movies!</h1>
+            <div class="query">
+                <span class='bullet'></span>
+                <span>Is&nbsp;</span>
+                <select id="star-name">
+                    <th:block th:each="movie : ${movies}">
+                        <option th:value="${movie.star}" th:text="${movie.star}"></option>
+                    </th:block>
+                </select>
+                <span>&nbsp;an</span>
+                <select id="star-type">
+                    <option value="actor">actor</option>
+                    <option value="actress">actress</option>
+                </select>
+                <span>?</span>
+                <span class="ask" onclick="getActorType()">Ask</span>
+            </div>
+            <div id="results-panel1" class="panel panel-success" th:if="${result1} != null">
+                <div class="panel-heading big-font">Results</div>
+                <div class="panel-body">
+
+                    <div id="result">
+                        <div th:text="${result1}"></div>
+                    </div>
+
+                    <button id="clear-results" onclick="clearResults()">Clear results</button>
+                </div>
+            </div>
+
+            <div class="query">
+                <span class='bullet'></span>
+                <span>What are the best movies ever and who starred in them?</span>
+                <span class="ask" onclick="getBestMovies()">Ask</span>
+            </div>
+
+            <div id="results-panel2" class="panel panel-success" th:if="${result2} != null">
+                <div class="panel-heading big-font">Results</div>
+                <div class="panel-body">
+
+                    <div id="result">
+                        <div th:text="${result2}"></div>
+                    </div>
+
+                    <button id="clear-results" onclick="clearResults()">Clear results</button>
+                </div>
+            </div>
+
+            <div class="query">
+                <span class='bullet'></span>
+                <span>Who are other good directors besides Quentin Tarantino?</span>
+
+                <span class="ask" onclick="getGoodDirectors()">Ask</span>
+            </div>
+
+            <div id="results-panel3" class="panel panel-success" th:if="${result3} != null">
+                <div class="panel-heading big-font">Results</div>
+                <div class="panel-body">
+
+                    <div id="result">
+                        <div th:text="${result3}"></div>
+                    </div>
+
+                    <button id="clear-results" onclick="clearResults()">Clear results</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+<script>
+
+    function getActorType() {
+        var name = $("#star-name").val();
+        var type = $("#star-type").val();
+
+        var data = {
+            name : name,
+            type : type
+        }
+
+        $.post("http://localhost:8080/type", data, function(data) {
+            $("body").html(data);
+        });
+    }
+
+    function getBestMovies() {
+        $.get("http://localhost:8080/bestmovies", function(data) {
+            $("body").html(data);
+        })
+    }
+
+    function getGoodDirectors() {
+        $.get("http://localhost:8080/gooddirectors", function(data) {
+            $("body").html(data);
+        })
+    }
+
+    function clearResults() {
+        $("#clear-results").remove();
+        $("#results-panel1").remove();
+        $("#results-panel2").remove();
+        $("#results-panel3").remove();
+    }
+
+</script>
+</body>
+</html>

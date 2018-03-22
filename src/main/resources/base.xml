@@ -1,0 +1,147 @@
+<base>
+    <facts>
+        <movie>
+            <name>A Beautiful Mind</name>
+            <director>Ron Howard</director>
+            <star>Russell Crowe</star>
+        </movie>
+        <movie>
+            <name>The Imitation Game</name>
+            <director>Morten Tyldum</director>
+            <star>Keira Knightley</star>
+        </movie>
+        <movie>
+            <name>Girl with a Pearl Earring</name>
+            <director>Peter Webber</director>
+            <star>Scarlett Johansson</star>
+        </movie>
+        <movie>
+            <name>The Danish Girl</name>
+            <director>Tom Hooper</director>
+            <star>Alicia Vikander</star>
+        </movie>
+        <movie>
+            <name>The King's Speech</name>
+            <director>Tom Hooper</director>
+            <star>Colin Firth</star>
+        </movie>
+        <movie>
+            <name>The Revenant</name>
+            <director>Alejandro G. Iñárritu</director>
+            <star>Leonardo DiCaprio</star>
+        </movie>
+        <movie>
+            <name>The Departed</name>
+            <director>Martin Scorsese</director>
+            <star>Leonardo DiCaprio</star>
+        </movie>
+        <movie>
+            <name>Licoln</name>
+            <director>Steven Spielberg</director>
+            <star>Daniel Day-Lewis</star>
+        </movie>
+        <movie>
+            <name>Django Unchained</name>
+            <director>Quentin Tarantino</director>
+            <star>Cristoph Waltz</star>
+        </movie>
+
+        <oscar>
+            <title>Best Director</title>
+            <name>The Departed</name>
+            <owner>Martin Scorsese</owner>
+        </oscar>
+        <oscar>
+            <title>Best Director</title>
+            <name>The King's Speech</name>
+            <owner>Tom Hooper</owner>
+        </oscar>
+        <oscar>
+            <title>Best Director</title>
+            <name>The King's Speech</name>
+            <owner>Keira Knightley</owner>
+        </oscar>
+
+        <women>Keira Knightley</women>
+        <women>Charlize Theron</women>
+        <women>Kate Winslet</women>
+        <women>Viola Davis</women>
+        <women>Octavia Spencer</women>
+        <women>Natalie Portman</women>
+        <women>Sylvia Hoeks</women>
+        <women>Scarlett Johansson</women>
+        <women>Emma Watson</women>
+        <women>Rooney Mara</women>
+        <women>Bérénice Marlohe</women>
+
+        <men>Russell Crowe</men>
+        <men>Benedict Cumberbatch</men>
+        <men>Matt Damon</men>
+        <men>Bradley Cooper</men>
+        <men>Antony Yelchin</men>
+        <men>Miler Teller</men>
+        <men>J.K. Simmons</men>
+        <men>Daniel Craig</men>
+        <men>Chiwetel Ejiofor</men>
+        <men>Dwight Henry</men>
+        <men>Hugo Weaving</men>
+        <men>Johnny Depp</men>
+        <men>Miles Teller</men>
+        <men>Geoffrey Rush</men>
+        <men>Ralph Fiennes</men>
+        <men>Russell Crowe</men>
+        <men>F. Murray Abraham</men>
+        <men>Brad Pitt</men>
+        <men>Tom Hardy</men>
+    </facts>
+
+    <rules>
+        <rule>
+            <if>
+                <what>movie.star</what>
+                <relation>=</relation>
+                <to>*</to>
+            </if>
+            <and>
+                <what>movie.star</what>
+                <relation>=</relation>
+                <to>women</to>
+            </and>
+            <then>actress</then>
+        </rule>
+        <rule>
+            <if>
+                <what>movie.star</what>
+                <relation>=</relation>
+                <to>*</to>
+            </if>
+            <and>
+                <what>movie.star</what>
+                <relation>=</relation>
+                <to>men</to>
+            </and>
+            <then>actor</then>
+        </rule>
+        <rule>
+            <if>
+                <what>movie.director</what>
+                <relation>=</relation>
+                <to>Quentin Tarantino</to>
+            </if>
+            <then>bestmovieever</then>
+        </rule>
+        <rule>
+            <if>
+                <what>oscar.title</what>
+                <relation>=</relation>
+                <to>Best Director</to>
+            </if>
+            <and>
+                <what>oscar.owner</what>
+                <relation>!=</relation>
+                <to>Quentin Tarantino</to>
+            </and>
+            <then>anothergooddirector</then>
+        </rule>
+    </rules>
+</base>

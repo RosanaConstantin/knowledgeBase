@@ -1,0 +1,50 @@
+body{
+    background: #FAEBD7;
+}
+
+.containter{
+}
+
+.query {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+.ask{
+    border: 1px solid black;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    position: absolute;
+    margin-left: 50px;
+    background-color: aliceblue;
+}
+
+.query{
+    margin-bottom: 40px;
+}
+
+.moviesImg img{
+    width: 100%;
+}
+
+.title{
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bullet{
+    background-color: black;
+    display:inline-block;
+    vertical-align: middle;
+    background-size:100%;
+    height:10px;
+    width:10px;
+    margin-right: 5px;
+    margin-left: 15px;
+    border-radius: 50%;
+}
